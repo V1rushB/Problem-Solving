@@ -4,6 +4,7 @@
 - Sources: these problems were found either on codeforces or generated on chatgpt-4. => leetcode/atcoder problems will be added in the future inshaa'allah.
   - this will change in the future but this list will include some problems on the following topics:
         - Asynchronous Programming. -> since it's really annoying.
+    ### < Topics > 
         - Closure
         - Two Pointers Approach -> also will include both sliding window and dynamic sliding window.
         - DP -> Will include some very easy DP problems which also will have the goodie prefix sum approach.
