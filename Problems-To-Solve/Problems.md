@@ -2,6 +2,8 @@
 - CPP is surely still preferable to solve problems lol
 - this list is not yet complete, its main purpose is not compititve programming but more like a practise to JavaScript.
 - Sources: these problems were found either on codeforces or generated on chatgpt-4. => leetcode/atcoder problems will be added in the future inshaa'allah.
+- in addition to all of these problems, we can't just forget freecodecamp.org.
+- here is a [direct link to its problems](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/basic-javascript/)
   - this will change in the future but this list will include some problems on the following topics:
         - Asynchronous Programming. -> since it's really annoying.
     ### < Topics > 
