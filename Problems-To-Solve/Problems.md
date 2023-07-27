@@ -58,6 +58,7 @@
   ## < Greedy Algorithms >
   - Given an array of intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
   - Given an array nums of n integers where n > 1, return an array output such that output[i] is equal to the product of all the numbers in the original array except nums[i]. Solve it without division and in O(n).
+  - [Monsters](https://codeforces.com/contest/1849/problem/B)
  
   ## <maping problems, frequencey array problems>
   - Given an array of integers, count the frequency of each integer and return the integer with the highest frequency.
