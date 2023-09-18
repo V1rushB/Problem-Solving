@@ -117,7 +117,7 @@ vector<ll> bitmask(string str, ll a) {
     return d;
 }
 
-void solve() {
+void solution() {
     string str, str2; cin >> str >> str2;
     ll a(0), b(0), qstmrk(0), s(0), sumem(0);
     for (int o = 0; o < str.size(); o++)
