@@ -115,7 +115,7 @@ ll binarys(vector<ll> &d, ll k) {
 
 void solution() {
     ll a,k; cin >> a >> k;
-    vector<ll> d(a+1);
+    vector<ll> d(a);
     for(int o = 0; o < a;o++)
         cin >> d[o];
     return print(binarys(d,k));
