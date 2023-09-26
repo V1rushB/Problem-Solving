@@ -99,18 +99,19 @@ bool check(vector<ll> &d, ll k, ll val) {
 }
 
 ll binarys(vector<ll> &d, ll k) {
-    ll l(d[d.size()/2]),r(INF),temp(-1);
+    ll l(d[d.size()/2]),r(l+k),temp(-1);
     while(l<=r)
     {
         ll mid = (r-l)/2+l;
         if(check(d,k,mid)) {
             l = mid + 1;
+            temp = mid;
         }
         else {
             r = mid-1;
         }
     }
-    return l;
+    return temp;
 }
 
 void solution() {
@@ -118,6 +119,7 @@ void solution() {
     vector<ll> d(a);
     for(int o = 0; o < a;o++)
         cin >> d[o];
+    sort(all(d));
     return print(binarys(d,k));
 }
 
