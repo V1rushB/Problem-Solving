@@ -58,7 +58,7 @@ const int dx[4]{ 1, 0, -1, 0 }, dy[4]{ 0, 1, 0, -1 }; //edges
 // const int dx[8] = { -1, -1, 0, 1, 1, 1, 0, -1 };
 // const int dy[8] = { 0, 1, 1, 1, 0, -1, -1, -1 }; // adj
 
-const ll mod = 998244353, inf = 1001001001, INF = -1, mx = 1e5 + 5; // NEVER EDIT!
+const ll mod = 998244353, inf = 1001001001, INF = 1e18, mx = 1e5 + 5; // NEVER EDIT!
 const long double pi = 3.14159265359;
 int mii(inf); ll mi(1e18), ma(-1), length_counter(0);
 
@@ -94,73 +94,26 @@ char alpha[_ALPHA_SIZE];
 void makeAlpha() {for(int o = 0; o < _ALPHA_SIZE;o++) {alpha[o] = (!o ? 'a' : (o-1)+'a');}}
 
 
-//Problem URL: https://codeforces.com/group/rkArIqWrpQ/contest/528805/problem/H
+//Problem URL: https://codeforces.com/group/rkArIqWrpQ/contest/427050/problem/H
+
+ll calc(ll start, ll target) {
+    ll steps = 0;
+    while (target > start) {
+        if (!(target%2)) {
+            target /= 2;
+        } else if (target%10==1) {
+            target /= 10;
+        } else {
+            return -1;
+        }
+        steps++;
+    }
+    return (target == start) ? steps : -1;
+}
 
 void solution() {
-    ll a; cin >> a;
-    vector<vector<ll>> d(a, vector<ll>(a));
-    vector<vector<ll>> safeness(a, vector<ll>(a, INF));
-
-    queue<pair<ll, ll>> q;
-    for (int o = 0; o < a; o++) {
-        for (int i = 0; i < a; i++) {
-            cin >> d[o][i];
-            if (d[o][i]) {
-                safeness[o][i] = !safeness[o][i];
-                q.push({o, i});
-            }
-        }
-    }
-
-    while (!q.empty()) {
-        auto [x, y] = q.front();
-        q.pop();
-
-        for (int o = 0; o < 4; o++) {
-            ll nx = x + dx[o];
-            ll ny = y + dy[o];
-            if (nx >= 0 && ny >= 0 && nx < a && ny < a && safeness[nx][ny] == INF) {
-                safeness[nx][ny] = safeness[x][y] + 1;
-                cout << "|| X || => " << x << ' ' << "|| Y || =>" << y << endl;
-                cout << "|| NX || => " << nx << ' ' << "|| NY || =>" << ny << endl;
-                for(int i = 0; i < a;i++) {
-                    for(int j = 0; j < a;j++) {
-                        cout << safeness[i][j] << ' ';
-                    }
-                    cout << endl;
-                }
-                cout << "______________________________" << endl;
-                q.push({nx, ny});
-            }
-        }
-    }
-
-    priority_queue<pair<ll, pair<ll, ll>>> pq;
-    pq.push({safeness[0][0], {0, 0}});
-    vector<vector<bool>> visited(a, vector<bool>(a, false));
-
-    while (!pq.empty()) {
-        auto [s, pos] = pq.top();
-        auto [x, y] = pos;
-        pq.pop();
-
-        if (x == a - 1 && y == a - 1) {
-            cout << s << endl;
-            return;
-        }
-
-        if (visited[x][y]) continue;
-        visited[x][y] = true;
-
-        for (int k = 0; k < 4; k++) {
-            ll nx = x + dx[k];
-            ll ny = y + dy[k];
-
-            if (nx >= 0 && nx < a && ny >= 0 && ny < a && !visited[nx][ny]) {
-                pq.push({min(s, safeness[nx][ny]), {nx, ny}});
-            }
-        }
-    }
+    ll a,k; cin >> a >> k;
+    return print(calc(a,k));
 }
 
 /* stuff you should look for
