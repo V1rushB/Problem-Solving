@@ -95,37 +95,41 @@ void makeAlpha() {for(int o = 0; o < _ALPHA_SIZE;o++) {alpha[o] = (!o ? 'a' : (o
 
 void solution() {
     int a, k; cin >> a >> k;
+    int savek(k);
     map<int, vector<int>> mp;
     while(k--) {
-        ll u, v; cin >> u >> v;
-        mp[u].push_back(v);
+        int u, v; cin >> u >> v;
         mp[v].push_back(u);
+        mp[u].push_back(v);
     }
 
     vector<bool> visited(a+1, false);
+    queue<pair<int, int>> q;
 
-    queue<pair<int,int>> q; // val and parent? rmbr dfs
-    q.push({1,-1});
+    q.push(make_pair(1,-1)); 
+
+    bool ok = false;
     while(!q.empty()) {
         auto [val, parent] = q.front();
         q.pop();
 
         visited[val] = true;
+
         for(int el : mp[val]) {
             if(visited[el]) {
-                if(parent != el) {
-                    return no();
-                }
+                if(parent != el)
+                    ok = true;
             } else {
                 q.push(make_pair(el,val));
             }
         }
+
     }
-    for(int o = 1; o < a+1;o++) {
-        if(!visited[o])
+    for(int o = 1; o <= a;o++) {
+        if(!ok || savek != a || !visited[o])
             return no();
     }
-    return yes();
+    cout << "FHTAGN!" << endl;
 }
 
 /* stuff you should look for
