@@ -93,51 +93,11 @@ const size_t _ALPHA_SIZE = 27;
 char alpha[_ALPHA_SIZE]; 
 void makeAlpha() {for(int o = 0; o < _ALPHA_SIZE;o++) {alpha[o] = (!o ? 'a' : (o-1)+'a');}}
 
-
-bool isValid(const vector<ll> &ctr, const vector<ll> &d, const vector<ll> &store, ll coins, const ll target) {
-    ll cost(0);
-    for(int o = 0; o < d.size();o++) {
-        ll required = ctr[o] * target;
-        if(required > d[o]) {
-            ll buy = required - d[o];
-            cost+=buy*store[o];
-        }
-    }
-    return cost <= coins;
-}
-
-ll binarys(const vector<ll> &ctr, const vector<ll> &d, const vector<ll> &store, const ll coins) {
-    ll l(0),r(1e13),temp(-1);
-    while(l<=r) {
-        ll mid = l + (r-l)/2;
-        if(isValid(ctr, d, store, coins, mid)) {
-            temp = mid;
-            l = mid + 1;
-        } else {
-            r = mid - 1;
-        }
-    }
-    return temp;
-}
-
 void solution() {
+    ll a, k; cin >> a >> k;
     string str; cin >> str;
-    vector<ll> ctr(3);
-    map<char,ll> mp;
-    mp['B']=0;
-    mp['S']=1;
-    mp['C']=2;
-    for(int o = 0; o <str.size();o++) {
-        ctr[mp[str[o]]]++;
-    }
-    vector<ll> d(3),store(3);
-    for(int o = 0; o < 3;o++)
-        cin >> d[o];
-    for(int o = 0; o < 3;o++)
-        cin >> store[o];
-    ll x; cin >> x;
-    // fe(ctr);
-    return print(binarys(ctr,d,store,x));
+
+    
 }
 
 /* stuff you should look for
